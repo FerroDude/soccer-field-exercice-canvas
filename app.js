@@ -53,8 +53,50 @@ drawLine(
 );
 
 //Rectangles for goalie area
-drawRect(stripeWidth, 80, stripeWidth * 2, 120);
-drawRect(stripeWidth, 110, (stripeWidth * 2) / 3, 60);
+drawRect(stripeWidth, 78, stripeWidth * 2, 120);
+drawRect(stripeWidth, 108, (stripeWidth * 2) / 3, 60);
+drawRect(stripeWidth, 122, -stripeWidth / 2.2, 31);
+
+drawRect(canvas.width - stripeWidth * 3, 78, stripeWidth * 2, 120);
+drawRect(canvas.width - stripeWidth / 0.6, 108, (stripeWidth * 2) / 3, 60);
+drawRect(canvas.width - stripeWidth / 1.9, 122, -stripeWidth / 2.2, 31);
+
+//arc draw function
+const drawArc = (x, y, radius, startAngle, endAngle, counterClockwise) => {
+  ctx.beginPath();
+  ctx.arc(x, y, radius, startAngle, endAngle, counterClockwise);
+  ctx.stroke();
+};
+
+//middle circle
+drawArc(canvas.width / 2, canvas.height / 2, 25, 0, 2 * Math.PI);
+
+//small circles
+drawArc(canvas.width / 2, canvas.height / 2, 1, 0, 2 * Math.PI);
+drawArc(65, canvas.height / 2, 1, 0, 2 * Math.PI);
+drawArc(345, canvas.height / 2, 1, 0, 2 * Math.PI);
+
+//arc in front of goals
+drawArc(stripeWidth * 2.3, 136, 30, 1.75 * Math.PI, 0.25 * Math.PI);
+drawArc(
+  canvas.width - stripeWidth * 2.3,
+  136,
+  30,
+  0.75 * Math.PI,
+  1.25 * Math.PI
+);
+
+//corners
+drawArc(stripeWidth, stripeWidth, 8, 0, Math.PI / 2);
+drawArc(canvas.width - stripeWidth, stripeWidth, 8, Math.PI / 2, Math.PI);
+drawArc(stripeWidth, canvas.height - stripeWidth, 8, Math.PI * 1.5, 0);
+drawArc(
+  canvas.width - stripeWidth,
+  canvas.height - stripeWidth,
+  8,
+  Math.PI,
+  Math.PI * 1.5
+);
 
 //top
 /* drawLine(
